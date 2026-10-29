@@ -13,7 +13,7 @@ function ProductCard(props) {
         <input
           type="checkbox"
           checked={isChecked}
-          onChange={(e) => setIschecked(e.target.checked)}
+          onChange={() => props.Completed(props.key)}
           className="thecheck"
         />
         <h2 style={{ textDecoration: isChecked ? "line-through" : "none" }}>

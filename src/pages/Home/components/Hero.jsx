@@ -22,6 +22,16 @@ const [number,setNumber] = useState(0);
 const [isChecked,setIschecked] = useState(false);
 const [isFlex,setIsflex] = useState(false)
 
+const [alltask,setAlltask] = useState('all')
+
+
+const displayProducts = Products.filter((item)=>{
+    if (Completed === 'completed')
+         return item.isChecked = true
+        if(Completed === 'uncompleted')  return item.isChecked = false;
+        return true;
+})
+
 
 useEffect(()=>{
     const Productsneeded = localStorage.getItem('studentinfo')
