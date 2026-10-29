@@ -191,6 +191,7 @@ function Edit(item) {
 <div className='divTotal'>
        <h1>The Task </h1>
       <p>Total : {Total()}</p>
+      <button onClick={Completed}>Completed</button>
 </div>
           <div className='thecard'>
             {Products.map(item=> (<ProductCard  key={item.id} {...item} 
