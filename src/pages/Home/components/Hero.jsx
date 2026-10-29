@@ -16,6 +16,7 @@ const [level,setLevel] = useState('')
 const [change, setChange] = useState(null);
 const [number,setNumber] = useState(0);
 const [isChecked,setIschecked] = useState(false);
+const [isFlex,setIsflex] = useState(false)
 
 
 useEffect(()=>{
@@ -101,14 +102,13 @@ function Save() {
 }
 
 function Edit(item) {
-        const theformS = document.querySelector('.conta2BOxscnd');
-theformS.style.display = 'flex'
+   isFlex === true ? theformS.style.display = 'flex' : theformS
+
 
             setName(item.name);            
-            setLevel(item.level);   
+            setLevel(item.level);      
             setChange(item.id);  
-            console.log(item.id);
-            console.log(item.name);
+  
                
             console.log(change);
             
@@ -160,7 +160,7 @@ theformS.style.display = 'flex'
       <p>Total : {Total()}</p>
 </div>
           <div className='thecard'>
-            {Products.map(item=> (<ProductCard  key={item.id} {...item} name={item.name}  city={item.level}
+            {Products.map(item=> (<ProductCard  key={item.id} {...item} name={item.name}  level={item.level}
             total={Total}
             rm={()=>Delete(item.id)
             }

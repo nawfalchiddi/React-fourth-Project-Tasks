@@ -3,15 +3,22 @@ import "./Hero.css";
 import "./Hero";
 function ProductCard(props) {
   const [isChecked, setIschecked] = useState(false);
-  const [Products, setProduct] = useState([]);
+  // const [Products, setProduct] = useState([]);
 
-  const [change, setChange] = useState(0);
-  const [name, setName] = useState("");
-  const [level, setLevel] = useState("");
+  // const [change, setChange] = useState(0);
+  // const [name, setName] = useState("");
+  // const [level, setLevel] = useState("");
 
   const exportedvariables =  {
+    Products,
         name,
         level,
+        add,
+        edit,
+        change,
+        isflex
+     
+
   }
 
 
@@ -28,7 +35,7 @@ function ProductCard(props) {
         <h2 style={{ textDecoration: isChecked ? "line-through" : "none" }}>
           {props.name}
         </h2>
-        <p className="thetxtline">{props.city} Level</p>
+        <p className="thetxtline">{props.level} Level</p>
         <button className="controls" onClick={props.rm}>
           Delete
         </button>
@@ -37,7 +44,7 @@ function ProductCard(props) {
         </button>
       </div>
 
-      <form action="" className="conta2BOxscnd" onSubmit={props.add}>
+      <form action="" style={{display : isflex ? 'flex' : 'none'}} className="conta2BOxscnd" onSubmit={props.add}>
         <h1>Add a product now</h1>
 
         <input
