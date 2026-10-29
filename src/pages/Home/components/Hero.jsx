@@ -146,13 +146,14 @@ function Edit(item) {
         return count 
     }
 
-    
+
   function Completed(id) {
     setProduct(prev=>prev.map(x=> x.id === id ?{...x, isChecked: !x.isChecked}  : x ))
     
    }
 
    const forminfo = {
+    Completed:Completed,
     formName : name,
     formLevel : level,
     change:change,
