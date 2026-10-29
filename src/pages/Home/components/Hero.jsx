@@ -87,7 +87,7 @@ setLevel('');
 console.log('please');
         
     }
-    function Add(e){
+    function Addfrt(e){
         e.preventDefault()
 //          const inptname = document.querySelector('.thename').value;
 // const inptAge = document.querySelector('.price').value;
@@ -166,7 +166,7 @@ function Edit(item) {
         <section className='thebigconta'>
 
             
-               <form action="" className="theform" onSubmit={Add}>
+               <form action="" className="theform" onSubmit={Addfrt}>
           <h1>Add a product now</h1>
 
           <input className="thename" type="text" placeholder="name" value={namefrt} onChange={event=> setNamefrt(event.target.value)} required />
