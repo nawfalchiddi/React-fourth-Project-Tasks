@@ -1,25 +1,9 @@
 import { useState } from "react";
 import "./Hero.css";
-import "./Hero";
 function ProductCard(props) {
   const [isChecked, setIschecked] = useState(false);
-  // const [Products, setProduct] = useState([]);
+ 
 
-  // const [change, setChange] = useState(0);
-  // const [name, setName] = useState("");
-  // const [level, setLevel] = useState("");
-
-  const exportedvariables =  {
-    Products,
-        name,
-        level,
-        add,
-        edit,
-        change,
-        isflex
-     
-
-  }
 
 
 
@@ -28,7 +12,7 @@ function ProductCard(props) {
       <div className="conta2BOx">
         <input
           type="checkbox"
-          value={isChecked}
+          checked={isChecked}
           onChange={(e) => setIschecked(e.target.checked)}
           className="thecheck"
         />
@@ -43,24 +27,24 @@ function ProductCard(props) {
           Edit
         </button>
       </div>
-
-      <form action="" style={{display : isflex ? 'flex' : 'none'}} className="conta2BOxscnd" onSubmit={props.add}>
+{props.formChange === props.id && ( 
+  <form action=""  className="conta2BOxscnd" onSubmit={props.add}>
         <h1>Add a product now</h1>
 
         <input
           id="theName"
           type="text"
           placeholder="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
+          value={props.formName}
+          onChange={(event) => props.setName(event.target.value)}
           required
         />
 
         <select
           name=""
           id="theslctLvl"
-          value={level}
-          onChange={(event) => setLevel(event.target.value)}
+          value={props.formLevel}
+          onChange={(event) => props.setLevel(event.target.value)}
         >
           <option value="medium">Medium</option>
           <option value="hard">Hard</option>
@@ -70,11 +54,12 @@ function ProductCard(props) {
         <button type="submit" className="btnform">
           Add
         </button>
-        <button className="btnform" onClick={Save}>
+        <button className="btnform" type="button" onClick={props.save}>
           save
         </button>
         {/* {change !== null && (<button className='btnform' type="button" onClick={Save}> Save Edit </button>)} */}
-      </form>
+      </form>)}
+      
     </section>
   );
 }

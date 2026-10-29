@@ -12,7 +12,11 @@ import homepic from '../../../assets/Gemini_Generated_Image_6fzx506fzx506fzx.jfi
 function Hero() {
 const [Products,setProduct] = useState([])
 const [name,setName] = useState('')
-const [level,setLevel] = useState('')
+const [level,setLevel] = useState('medium')
+
+const [namefrt,setNamefrt] = useState('')
+const [levelfrt,setLevelfrt] = useState('')
+
 const [change, setChange] = useState(null);
 const [number,setNumber] = useState(0);
 const [isChecked,setIschecked] = useState(false);
@@ -29,10 +33,10 @@ useEffect(()=>{
 
     useEffect(()=>{
     const count = setInterval(() => {
-        setNumber(prev=>prev += 1) 
+        setNumber(prev=>prev + 1) 
     }, 1000);
    return ()=> clearInterval(count)
-})
+},[])
 
 
 
@@ -83,26 +87,39 @@ setLevel('');
 console.log('please');
         
     }
+    function Add(e){
+        e.preventDefault()
+//          const inptname = document.querySelector('.thename').value;
+// const inptAge = document.querySelector('.price').value;
+// const inptcity = document.querySelector('.quatity').value;
+
+setProduct([...Products,{id:crypto.randomUUID(), namefrt:namefrt,levelfrt:levelfrt}]);  
+
+setNamefrt('');
+setLevelfrt('');
+console.log('please');
+        
+    }
 
 
 
 
 
 function Save() {
-    const theformS = document.querySelector('.conta2BOxscnd');
+    // const theformS = document.querySelector('.conta2BOxscnd');
 
-       theformS.style.display = 'none'
+    //    theformS.style.display = 'none'
    setProduct(Products.map(item=>
     item.id === change ? {...item,name,level} : item
    ));
 
    setChange(null)
     setName('')
-    setLevel('')
+    setLevel('medium')
 }
 
 function Edit(item) {
-   isFlex === true ? theformS.style.display = 'flex' : theformS
+//    isFlex === true ? theformS.style.display = 'flex' : theformS
 
 
             setName(item.name);            
@@ -130,7 +147,19 @@ function Edit(item) {
     }
 
 
-   
+   const forminfo = {
+    formName : name,
+    formLevel : level,
+    formChange:change,
+    setName:setName,
+    setLevel : setLevel,
+    setChange:setChange,
+    isFlex : isFlex,
+    add:Add,
+    save:Save
+
+    
+   }
     
 
     return(
@@ -140,10 +169,10 @@ function Edit(item) {
                <form action="" className="theform" onSubmit={Add}>
           <h1>Add a product now</h1>
 
-          <input className="thename" type="text" placeholder="name" value={name} onChange={event=> setName(event.target.value)} required />
+          <input className="thename" type="text" placeholder="name" value={namefrt} onChange={event=> setNamefrt(event.target.value)} required />
 
 
-<select name="" id="theslctLvl" value={level} onChange={event=>setLevel(event.target.value)}>
+<select name="" id="theslctLvl" value={levelfrt} onChange={event=>setLevelfrt(event.target.value)}>
     <option value="medium">Medium</option>
     <option value="hard">Hard</option>
     <option value="extrem">Extrem</option>
@@ -151,7 +180,7 @@ function Edit(item) {
 
           <button  type="submit"  className="btnform" >Add</button> 
           {/* <button className='btnform' onClick={SaveEdit}>save</button> */}
-          {change !== null && (<button className='btnform' type="button" onClick={Save}> Save Edit </button>)}
+          {/* {change !== null && (<button className='btnform' type="button" onClick={Save}> Save Edit </button>)} */}
         </form>
 
 
@@ -160,13 +189,12 @@ function Edit(item) {
       <p>Total : {Total()}</p>
 </div>
           <div className='thecard'>
-            {Products.map(item=> (<ProductCard  key={item.id} {...item} name={item.name}  level={item.level}
+            {Products.map(item=> (<ProductCard  key={item.id} {...item} 
             total={Total}
             rm={()=>Delete(item.id)
             }
             edit={()=>Edit(item)}
-            add={Add}
-            save={Save}
+           {...forminfo}
             
             />
         )
