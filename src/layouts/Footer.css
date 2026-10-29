@@ -1,0 +1,10 @@
+.fter{
+    color: blanchedalmond;
+    background-color: rgb(17, 20, 16);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 10%;
+   
+}

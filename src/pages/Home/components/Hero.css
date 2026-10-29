@@ -1,0 +1,164 @@
+.thebigconta{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heroSection{
+display: flex;
+width: 100%;
+justify-content: space-around;
+margin-top: 15vh;
+align-items: center;
+}
+.boxAbout{
+width: 45%;
+}
+.boxAbout img{
+    width: 100%;
+    border-radius: 10px;
+}
+.secondbox{
+width: 45%;
+}
+.firstbtn{
+width: 30%;
+height: 5vh;
+background-color: blueviolet;
+color: white;
+border-radius: 10px;
+border: none;
+
+}
+
+.conta2{
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    justify-items: center;
+}
+
+.conta2BOx{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5vh;
+    background-color: rgb(246, 247, 248);
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+.conta2BOxscnd{
+    position: relative;
+bottom: 10vh;
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(237, 241, 244);
+    width: 100%;
+    border-radius: 10px;
+    display: none;
+
+}
+.thecard{
+    width: 90%;
+}
+.divbtns{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+}
+.divTotal{
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    width: 90%;
+    border-radius: 10px;
+    background-color: white;
+
+}
+.controls{
+    background-color: rgb(199, 240, 148);
+    height: 5vh;
+    border: none;
+    border-radius: 10px;
+width: 10%;
+}
+.btnform{
+
+}
+/* the form style */
+
+.theform{
+    border-radius: 10px;
+background-color: white;
+display: flex;
+align-items: center;
+margin-top: 4vh;
+height: 20vh;
+width: 90%;
+justify-content: center;
+justify-content: space-around;
+
+}
+.thename{
+border: 1px solid lightgreen;
+height: 4vh;
+border-radius: 10px;
+}
+#theName{
+border: 1px solid lightgreen;
+height: 4vh;
+border-radius: 10px;
+}
+.quatity{
+border-radius: 10px;
+
+    border: 1px solid lightgreen;
+height: 4vh;
+}
+.price{
+border-radius: 10px;
+
+border: 1px solid lightgreen;
+height: 4vh;
+}
+.btnform{
+    height: 5vh;
+    background-color: blueviolet;
+    color: white;
+border-radius: 10px;
+width: 14%;
+border: 1px solid lightgreen;
+border-radius: 10px;
+}
+.thepause{
+     height: 5vh;
+    background-color: blueviolet;
+    color: white;
+border-radius: 10px;
+width: 44%;
+border: none;
+border-radius: 10px; 
+}
+.thereset{
+  height: 5vh;
+    background-color: blueviolet;
+    color: white;
+border-radius: 10px;
+width: 44%;
+border: none;
+border-radius: 10px;
+}
