@@ -26,10 +26,14 @@ const [alltask,setAlltask] = useState('all')
 
 
 const displayProducts = Products.filter((item)=>{
-    if (Completed === 'completed')
-         return item.isChecked = true
-        if(Completed === 'uncompleted')  return item.isChecked = false;
+   if (alltask === 'completed') {
+    if (item.isChecked === true) {
         return true;
+    }else{
+        return false
+    }
+   }
+  
 })
 
 
@@ -204,23 +208,23 @@ function Edit(item) {
 <div className='divTotal'>
        <h1>The Task </h1>
       <p>Total : {Total()}</p>
+     <button onClick={() => setAlltask('all')}>All</button>
+  <button onClick={() => setAlltask('completed')}>Completed</button>
+  <button onClick={() => setAlltask('uncompleted')}>Active</button>
       {/* <button onClick={Completed}>Completed</button> */}
 </div>
-          <div className='thecard'>
-            {Products.map(item=> (<ProductCard  key={item.id} {...item} 
-            total={Total}
-            rm={()=>Delete(item.id)
-            }
-            edit={()=>Edit(item)}
-           {...forminfo}
-            
-            />
-        )
-    )
-    
-}
-{/* {console.log()} */}
-            </div>  
+<div className='thecard'>
+  {displayProducts.map(item => (
+    <ProductCard 
+      key={item.id} 
+      {...item} 
+      {...forminfo}
+      total={Total}
+      rm={() => Delete(item.id)}
+      edit={() => Edit(item)}
+    />
+  ))}
+</div>
 
 
 

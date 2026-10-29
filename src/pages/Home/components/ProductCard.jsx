@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./Hero.css";
 function ProductCard(props) {
-  const [isChecked, setIschecked] = useState(false);
  
 
 
@@ -12,11 +11,11 @@ function ProductCard(props) {
       <div className="conta2BOx">
         <input
           type="checkbox"
-          checked={isChecked}
-          onChange={() => props.Completed(props.key)}
+          checked={props.isChecked}
+          onChange={() => props.Completed(props.id)}
           className="thecheck"
         />
-        <h2 style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+        <h2 style={{ textDecoration: props.isChecked ? "line-through" : "none" }}>
           {props.name}
         </h2>
         <p className="thetxtline">{props.level} Level</p>
@@ -27,7 +26,7 @@ function ProductCard(props) {
           Edit
         </button>
       </div>
-{props.formChange === props.id && ( 
+{props.change === props.id && ( 
   <form action=""  className="conta2BOxscnd" onSubmit={props.add}>
         <h1>Add a product now</h1>
 
