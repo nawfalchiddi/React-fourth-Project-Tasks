@@ -93,7 +93,7 @@ console.log('please');
 // const inptAge = document.querySelector('.price').value;
 // const inptcity = document.querySelector('.quatity').value;
 
-setProduct([...Products,{id:crypto.randomUUID(), name:namefrt,level:levelfrt}]);  
+setProduct([...Products,{id:crypto.randomUUID(), name:namefrt,level:levelfrt,isChecked:false}]);  
 
 setNamefrt('');
 setLevelfrt('');
@@ -146,6 +146,11 @@ function Edit(item) {
         return count 
     }
 
+    
+  function Completed(id) {
+    setProduct(prev=>prev.map(x=> x.id === id ?{...x, isChecked: !x.isChecked}  : x ))
+    
+   }
 
    const forminfo = {
     formName : name,
@@ -161,10 +166,7 @@ function Edit(item) {
     
    }
     
-   function Completed() {
-    setProduct(prev=>prev.filter(x=>x.isChecked===true))
-    
-   }
+ 
 
     return(
         <section className='thebigconta'>
@@ -191,7 +193,7 @@ function Edit(item) {
 <div className='divTotal'>
        <h1>The Task </h1>
       <p>Total : {Total()}</p>
-      <button onClick={Completed}>Completed</button>
+      {/* <button onClick={Completed}>Completed</button> */}
 </div>
           <div className='thecard'>
             {Products.map(item=> (<ProductCard  key={item.id} {...item} 
