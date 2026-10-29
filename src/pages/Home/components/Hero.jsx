@@ -93,7 +93,7 @@ console.log('please');
 // const inptAge = document.querySelector('.price').value;
 // const inptcity = document.querySelector('.quatity').value;
 
-setProduct([...Products,{id:crypto.randomUUID(), namefrt:namefrt,levelfrt:levelfrt}]);  
+setProduct([...Products,{id:crypto.randomUUID(), name:namefrt,level:levelfrt}]);  
 
 setNamefrt('');
 setLevelfrt('');
@@ -150,7 +150,7 @@ function Edit(item) {
    const forminfo = {
     formName : name,
     formLevel : level,
-    formChange:change,
+    change:change,
     setName:setName,
     setLevel : setLevel,
     setChange:setChange,
@@ -161,13 +161,17 @@ function Edit(item) {
     
    }
     
+   function Completed() {
+    setProduct(prev=>prev.filter(x=>x.isChecked===true))
+    
+   }
 
     return(
         <section className='thebigconta'>
 
             
                <form action="" className="theform" onSubmit={Addfrt}>
-          <h1>Add a product now</h1>
+          <h1>Add a Task now</h1>
 
           <input className="thename" type="text" placeholder="name" value={namefrt} onChange={event=> setNamefrt(event.target.value)} required />
 
