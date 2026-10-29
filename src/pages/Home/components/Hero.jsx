@@ -17,6 +17,7 @@ const [change, setChange] = useState(null);
 const [number,setNumber] = useState(0);
 const [isChecked,setIschecked] = useState(false);
 
+
 useEffect(()=>{
     const Productsneeded = localStorage.getItem('studentinfo')
     if (Productsneeded) {
@@ -99,15 +100,15 @@ function Save() {
     setLevel('')
 }
 
-function Edit(itm) {
+function Edit(item) {
         const theformS = document.querySelector('.conta2BOxscnd');
 theformS.style.display = 'flex'
-            setName(itm.name)        
-            
-                  
-            setLevel(itm.Level)   
-            setChange(itm.id)  
-            console.log(itm.id);
+
+            setName(item.name);            
+            setLevel(item.level);   
+            setChange(item.id);  
+            console.log(item.id);
+            console.log(item.name);
                
             console.log(change);
             
@@ -159,11 +160,13 @@ theformS.style.display = 'flex'
       <p>Total : {Total()}</p>
 </div>
           <div className='thecard'>
-            {Products.map(item=> (<ProductCard key={item.id} name={item.name}  city={item.level}
+            {Products.map(item=> (<ProductCard  key={item.id} {...item} name={item.name}  city={item.level}
             total={Total}
             rm={()=>Delete(item.id)
             }
-            edit={()=>Edit(item.id)}
+            edit={()=>Edit(item)}
+            add={Add}
+            save={Save}
             
             />
         )

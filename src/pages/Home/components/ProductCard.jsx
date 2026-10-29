@@ -5,47 +5,16 @@ function ProductCard(props) {
   const [isChecked, setIschecked] = useState(false);
   const [Products, setProduct] = useState([]);
 
-  function Add(e) {
-    e.preventDefault();
-    //          const inptname = document.querySelector('.thename').value;
-    // const inptAge = document.querySelector('.price').value;
-    // const inptcity = document.querySelector('.quatity').value;
-
-    setProduct([
-      ...Products,
-      { id: crypto.randomUUID(), name: name, level: level },
-    ]);
-
-    setName([""]);
-    setLevel([""]);
-    console.log("please");
-  }
-
   const [change, setChange] = useState(0);
   const [name, setName] = useState("");
   const [level, setLevel] = useState("");
 
-  function Save() {
-    const theformS = document.querySelector(".conta2BOxscnd");
-
-    theformS.style.display = "none";
-    setProduct(
-      Products.map((item) =>
-        item.id === change ? { ...item, name, level } : item,
-      ),
-    );
-
-    setChange(null);
-    setName("");
-    setLevel("");
+  const exportedvariables =  {
+        name,
+        level,
   }
 
-  // function Edit(itm) {
-  //   setName(itm.name);
 
-  //   setLevel(itm.Level);
-  //   setChange(itm.id);
-  // }
 
   return (
     <section className="thecontainerconta2b">
@@ -68,7 +37,7 @@ function ProductCard(props) {
         </button>
       </div>
 
-      <form action="" className="conta2BOxscnd" onSubmit={Add}>
+      <form action="" className="conta2BOxscnd" onSubmit={props.add}>
         <h1>Add a product now</h1>
 
         <input
