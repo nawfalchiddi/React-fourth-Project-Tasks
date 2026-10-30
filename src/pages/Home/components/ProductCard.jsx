@@ -26,6 +26,7 @@ function ProductCard(props) {
           Edit
         </button>
       </div>
+      {/* when you click on the edit function the change number changes */}
 {props.change === props.id && ( 
   <form action=""  className="conta2BOxscnd" onSubmit={props.add}>
         <h1>Add a product now</h1>

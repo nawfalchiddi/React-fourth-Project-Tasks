@@ -1,10 +1,5 @@
-function ControlButtons({
-  hasStarted,
-  isRunning,
-  onStart,
-  onPauseResume,
-  onReset
-}) {
+function ControlButtons(
+    {hasStarted,isRunning, onStart, onPauseResume,onReset}) {
   return (
     <div className="controls">
       {!hasStarted ? (

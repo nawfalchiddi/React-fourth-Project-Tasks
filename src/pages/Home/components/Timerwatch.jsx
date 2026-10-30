@@ -10,8 +10,10 @@ function Timer({ time }) {
 
   return (
     <div className="timer" role="timer" aria-label="Elapsed time">
-      {format(hours)}:{format(minutes)}:{format(seconds)}.
-      {format(hundredths)}
+      {/* {format(hours)}: */}
+      {format(minutes)}
+      :{format(seconds)}
+      {/* .{format(hundredths)} */}
     </div>
   );
 }
