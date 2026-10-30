@@ -1,5 +1,5 @@
-import { useState ,useEffect } from 'react';
-import React from 'react';
+import { useEffect, useRef, useState } from 'react';import React from 'react';
+import Timer from './Timerwatch'
 import './Hero.css';
 import imgs from '../../../assets/intermediate-swimming.jpg'
 // import Form from './Form';
@@ -22,7 +22,86 @@ const [number,setNumber] = useState(0);
 const [isChecked,setIschecked] = useState(false);
 const [isFlex,setIsflex] = useState(false)
 
-const [alltask,setAlltask] = useState('all')
+const [alltask,setAlltask] = useState('all');
+
+
+//* the methode of the watch>>>>>>
+  const [elapsed, setElapsed] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+  const [hasStarted, setHasStarted] = useState(false);
+
+  const startTimeRef = useRef(0);
+  const elapsedBeforeStartRef = useRef(0);
+
+  useEffect(() => {
+    if (!isRunning) return;
+
+    const intervalId = setInterval(() => {
+      setElapsed(
+        elapsedBeforeStartRef.current +
+          performance.now() - startTimeRef.current
+      );
+    }, 10);
+
+    return () => clearInterval(intervalId);
+  }, [isRunning]);
+
+  const handleStart = () => {
+    elapsedBeforeStartRef.current = 0;
+    startTimeRef.current = performance.now();
+    setElapsed(0);
+    setHasStarted(true);
+    setIsRunning(true);
+  };
+
+  const handlePauseResume = () => {
+    if (isRunning) {
+      const currentElapsed =
+        elapsedBeforeStartRef.current +
+        performance.now() - startTimeRef.current;
+
+      elapsedBeforeStartRef.current = currentElapsed;
+      setElapsed(currentElapsed);
+      setIsRunning(false);
+    } else {
+      startTimeRef.current = performance.now();
+      setIsRunning(true);
+    }
+  };
+
+  const handleReset = () => {
+    setIsRunning(false);
+    setHasStarted(false);
+    setElapsed(0);
+    elapsedBeforeStartRef.current = 0;
+    startTimeRef.current = 0;
+  };
+//* the end of the watch methode>>>>>>
+  
+
+
+
+// ! the code for the timer starts from 0>>>>>>>>>
+//  const [timer,setTimer] = useState(0);
+// const [intervalTime,setTimeInterval] = useState(null);
+
+
+// const startTimer = ()=> {
+//     setTimeInterval(setInterval(()=>{
+//         setTimer(prev=> prev + 1)
+//     },1000))
+// }
+
+
+// const pauseTimer = ()=>{
+//     clearInterval(intervalTime)
+// }
+
+// const resetTimer = ()=>{
+//     setTimer(0)
+//     clearInterval(intervalTime)
+// }
+//  !the end the code for the timer starts from 0>>>>>>>
 
 
 const displayProducts = Products.filter((item)=>{
@@ -32,7 +111,15 @@ const displayProducts = Products.filter((item)=>{
     }else{
         return false
     }
+   } else if (alltask === 'uncompleted') {
+    if (item.isChecked === false) {
+        return true;
+    }else{
+        return false;
+    }
    }
+
+   return true
   
 })
 
@@ -75,13 +162,6 @@ useEffect(()=>{
 
 
 
-// useEffect(()=>{
-//     const timer = setInterval(() => {
-    
-//     }, 1000);
-
-//    return ()=> clearInterval(timer)
-// })
 
 useEffect(()=>{
     localStorage.setItem('studentinfo', JSON.stringify(Products))
@@ -208,9 +288,9 @@ function Edit(item) {
 <div className='divTotal'>
        <h1>The Task </h1>
       <p>Total : {Total()}</p>
-     <button onClick={() => setAlltask('all')}>All</button>
-  <button onClick={() => setAlltask('completed')}>Completed</button>
-  <button onClick={() => setAlltask('uncompleted')}>Active</button>
+     <button  className='filters'  onClick={() => setAlltask('all')}>All</button>
+  <button  className='filters' onClick={() => setAlltask('completed')}>Completed</button>
+  <button className='filters'  onClick={() => setAlltask('uncompleted')}>Active</button>
       {/* <button onClick={Completed}>Completed</button> */}
 </div>
 <div className='thecard'>
@@ -229,10 +309,14 @@ function Edit(item) {
 
 
             <div className='timer box'>
-                <p>The timer needed :</p>
-                <h1>the count : {number}</h1>
-                <button className='thepause'>Pause</button><br /><br />
-                <button className='thereset'>Reset</button>
+ <Timer time={elapsed} />
+      <ControlButtons
+        hasStarted={hasStarted}
+        isRunning={isRunning}
+        onStart={handleStart}
+        onPauseResume={handlePauseResume}
+        onReset={handleReset}
+      />
             </div>
         </section>
     )

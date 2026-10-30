@@ -50,9 +50,9 @@ function ProductCard(props) {
           <option value="extrem">Extrem</option>
         </select>
 
-        <button type="submit" className="btnform">
+        {/* <button type="submit" className="btnform">
           Add
-        </button>
+        </button> */}
         <button className="btnform" type="button" onClick={props.save}>
           save
         </button>
