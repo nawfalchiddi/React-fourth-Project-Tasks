@@ -106,12 +106,14 @@ const [alltask,setAlltask] = useState('all');
 
 
 const displayProducts = Products.filter((item)=>{
+    // show the completed tasks
    if (alltask === 'completed') {
     if (item.isChecked === true) {
         return true;
     }else{
         return false
     }
+    // show the uncompleted tasks
    } else if (alltask === 'uncompleted') {
     if (item.isChecked === false) {
         return true;
@@ -119,7 +121,7 @@ const displayProducts = Products.filter((item)=>{
         return false;
     }
    }
-
+// show all
    return true
   
 })
