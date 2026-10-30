@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from 'react';import React from 'react';
-import Timer from './Timerwatch'
+import { useEffect, useRef, useState } from 'react';
+import Timer from './Timerwatch.jsx';
+import ControlButtons from './Buttonscontrol.jsx';
 import './Hero.css';
 import imgs from '../../../assets/intermediate-swimming.jpg'
 // import Form from './Form';

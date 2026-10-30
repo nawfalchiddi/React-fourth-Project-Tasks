@@ -146,7 +146,7 @@ height: 4vh;
     color: white;
 border-radius: 10px;
 width: 14%;
-border: 1px solid lightgreen;
+
 border-radius: 10px;
 }
 .thepause{
@@ -186,7 +186,8 @@ border-radius: 10px;
 }
 
 .timer {
-  margin-bottom: 32px;
+    margin-top: 30px;
+margin-bottom: 32px;  
   color: #f5f5f5;
   font-family: monospace;
   font-size: clamp(1.8rem, 7vw, 3rem);
@@ -194,6 +195,7 @@ border-radius: 10px;
 }
 
 .controls {
+    background-color: transparent;
   display: flex;
   justify-content: center;
   gap: 12px;
@@ -201,12 +203,11 @@ border-radius: 10px;
 
 .controls button {
   min-width: 100px;
-  padding: 12px 16px;
   border: 0;
   border-radius: 8px;
-  background: #e42a2a;
+  background: #c22ae4;
   color: white;
-  font-size: 1rem;
+ 
   cursor: pointer;
 }
 
